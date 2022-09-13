@@ -1,5 +1,8 @@
 package com.ghx.amylia.services;
 
+import com.ghx.amylia.models.Hospital;
+import com.ghx.amylia.models.Physician;
+import com.ghx.amylia.models.Procedure;
 import com.ghx.amylia.models.Record;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static com.ghx.amylia.utils.UtilityHelper.generateRecords;
+import static com.ghx.amylia.utils.UtilityHelper.*;
 
 @Service
 public class RecordService {
@@ -29,24 +32,31 @@ public class RecordService {
         List<Record> filteredRecords = records;
         if (hospitalName.isPresent()) {
             filteredRecords = filteredRecords.stream()
-                    .filter(c -> c.getHospitalName().trim().equalsIgnoreCase(hospitalName.get()))
+                    .filter(c -> c.getHospital().trim().equalsIgnoreCase(hospitalName.get()))
                     .collect(Collectors.toList());
         }
         if (physicianFirstName.isPresent()) {
             filteredRecords = filteredRecords.stream()
-                    .filter(c -> c.getPhysicianFirstName().trim().equalsIgnoreCase(physicianFirstName.get()))
-                    .collect(Collectors.toList());
-        }
-        if (physicianLastName.isPresent()) {
-            filteredRecords = filteredRecords.stream()
-                    .filter(c -> c.getPhysicianLastName().trim().equalsIgnoreCase(physicianLastName.get()))
+                    .filter(c -> c.getPhysician().trim().equalsIgnoreCase(physicianFirstName.get()))
                     .collect(Collectors.toList());
         }
         if (procedureName.isPresent()) {
             filteredRecords = filteredRecords.stream()
-                    .filter(c -> c.getProcedure().equalsIgnoreCase(procedureName.get()))
+                    .filter(c -> c.getProcedureName().equalsIgnoreCase(procedureName.get()))
                     .collect(Collectors.toList());
         }
         return filteredRecords;
+    }
+
+    public List<Hospital> listHospitals() {
+        return listAllHospitals();
+    }
+
+    public List<Procedure> listProcedures() {
+        return listAllProcedures();
+    }
+
+    public List<Physician> listPhysicians() {
+        return listAllPhysicians();
     }
 }

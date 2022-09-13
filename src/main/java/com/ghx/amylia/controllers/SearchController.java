@@ -31,6 +31,9 @@ public class SearchController {
         return recordService.getRecords(optionalHospital, optionalFname, optionalLname, optionalProcedure);
     }
 }
+
+
+
 //physician
 //totalCost
 

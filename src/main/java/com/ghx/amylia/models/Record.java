@@ -11,10 +11,10 @@ import java.util.UUID;
 @Builder(toBuilder = true)
 public class Record {
     private UUID id;
-    private String physicianFirstName;
-    private String physicianLastName;
-    private String hospitalName;
-    private String procedure;
-    private BigDecimal cost;
+    private String physician;
+    private String hospital;
+    private String category;
+    private String procedureName;
+    private BigDecimal procedureCost;
     private Date procedureDate;
 }
