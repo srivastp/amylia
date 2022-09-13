@@ -1,6 +1,7 @@
 # Getting Started
 
 ### Reference Documentation
+
 For further reference, please consider the following sections:
 
 * [Official Gradle documentation](https://docs.gradle.org)
@@ -11,7 +12,9 @@ For further reference, please consider the following sections:
 ### Guides
 
 * [Get all data](http://localhost:8080)
-* [Get all data by hospital name](http://localhost:8080?hospitalName=Fargo%20Clinical)
+* [Get all data by Hospital Name](http://localhost:8080?hospitalName=Fargo%20Clinical)
 * [Get all data by Physician First Name](http://localhost:8080?firstName=Brian)
-* [Get all data by Physician First Name](http://localhost:8080?lastName=Weinstein)
-* [Get all data by Physician First Name](http://localhost:8080/?hospitalName=Fargo%20Clinical&firstName=Brian&lastName=Parker)
+* [Get all data by Physician Last Name](http://localhost:8080?lastName=Weinstein)
+* [Get all data by Physician First Name](http://localhost:8080/?hospitalName=Fargo%20Clinical&firstName=Brian&lastName=Roy&procedure=Cataract%20Surgery)
+* [Get specific Procedure by Hospital Name](http://localhost:8080/?hospitalName=Fargo%20Clinical&procedure=Cataract%20Surgery)
+* [Get specific Procedure in all Hospitals](http://localhost:8080/?procedure=Cataract%20Surgery)

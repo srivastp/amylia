@@ -20,7 +20,8 @@ public class RecordService {
 
     public List<Record> getRecords(Optional<String> hospitalName,
                                    Optional<String> physicianFirstName,
-                                   Optional<String> physicianLastName) {
+                                   Optional<String> physicianLastName,
+                                   Optional<String> procedureName) {
         if (records.isEmpty()) {
             records = generateRecords();
         }
@@ -37,8 +38,13 @@ public class RecordService {
                     .collect(Collectors.toList());
         }
         if (physicianLastName.isPresent()) {
-            filteredRecords =  filteredRecords.stream()
+            filteredRecords = filteredRecords.stream()
                     .filter(c -> c.getPhysicianLastName().trim().equalsIgnoreCase(physicianLastName.get()))
+                    .collect(Collectors.toList());
+        }
+        if (procedureName.isPresent()) {
+            filteredRecords = filteredRecords.stream()
+                    .filter(c -> c.getProcedure().equalsIgnoreCase(procedureName.get()))
                     .collect(Collectors.toList());
         }
         return filteredRecords;

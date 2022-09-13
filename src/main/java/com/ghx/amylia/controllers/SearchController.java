@@ -21,12 +21,14 @@ public class SearchController {
     public List<Record> getRecords(
             @RequestParam(required = false) String hospitalName,
             @RequestParam(required = false) String firstName,
-            @RequestParam(required = false) String lastName
+            @RequestParam(required = false) String lastName,
+            @RequestParam(required = false) String procedure
     ) {
         Optional<String> optionalHospital = (hospitalName == null) ? Optional.empty() : Optional.of(hospitalName);
         Optional<String> optionalFname = (firstName == null) ? Optional.empty() : Optional.of(firstName);
         Optional<String> optionalLname = (lastName == null) ? Optional.empty() : Optional.of(lastName);
-        return recordService.getRecords(optionalHospital, optionalFname, optionalLname);
+        Optional<String> optionalProcedure = (procedure == null) ? Optional.empty() : Optional.of(procedure);
+        return recordService.getRecords(optionalHospital, optionalFname, optionalLname, optionalProcedure);
     }
 }
 //physician
