@@ -15,13 +15,17 @@ public class RecordService {
     private List<Record> records;
 
     public RecordService() {
-        records = generateRecords();
+        records = new ArrayList<>();
     }
 
     public List<Record> getRecords(Optional<String> hospitalName,
                                    Optional<String> physicianFirstName,
                                    Optional<String> physicianLastName) {
-        List<Record> filteredRecords = generateRecords();
+        if (records.isEmpty()) {
+            records = generateRecords();
+        }
+
+        List<Record> filteredRecords = records;
         if (hospitalName.isPresent()) {
             filteredRecords = filteredRecords.stream()
                     .filter(c -> c.getHospitalName().trim().equalsIgnoreCase(hospitalName.get()))
